@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="রোবট দাবা - নিনজা স্ল্যাশ অ্যানিমেশন সহ সাইবারপাঙ্ক দাবা খেলা">
+  <title>রোবট দাবা ⚔️ নিনজা স্ল্যাশ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="scanlines"></div>
+  <header id="header">
+    <h1 id="game-title">
+      <span class="title-icon">⚙️</span>
+      রোবট দাবা
+      <span class="title-icon">⚔️</span>
+    </h1>
+    <p id="subtitle">নিনজা স্ল্যাশ সংস্করণ</p>
+  </header>
+  <main id="game-container">
+    <!-- Left Panel -->
+    <aside id="left-panel" class="side-panel">
+      <div class="panel-section">
+        <h2 class="panel-title">🔴 ধরা পড়া ঘুঁটি</h2>
+        <div id="captured-black" class="captured-tray"></div>
+      </div>
+      <div class="panel-section">
+        <h2 class="panel-title">📜 চালের ইতিহাস</h2>
+        <div id="move-history" class="move-history-list"></div>
+      </div>
+    </aside>
+    <!-- Board Area -->
+    <div id="board-area">
+      <div id="turn-indicator">
+        <span id="turn-dot"></span>
+        <span id="turn-text">সাদার চাল</span>
+      </div>
+      <div id="board-wrapper">
+        <div id="board-glow"></div>
+        <div id="rank-labels" class="board-labels rank">
+          <span>৮</span><span>৭</span><span>৬</span><span>৫</span>
+          <span>৪</span><span>৩</span><span>২</span><span>১</span>
+        </div>
+        <div id="board"></div>
+        <div id="file-labels" class="board-labels file">
+          <span>a</span><span>b</span><span>c</span><span>d</span>
+          <span>e</span><span>f</span><span>g</span><span>h</span>
+        </div>
+      </div>
+      <div id="status-bar">
+        <span id="status-text">খেলা শুরু করুন!</span>
+      </div>
+    </div>
+    <!-- Right Panel -->
+    <aside id="right-panel" class="side-panel">
+      <div class="panel-section">
+        <h2 class="panel-title">🔵 ধরা পড়া ঘুঁটি</h2>
+        <div id="captured-white" class="captured-tray"></div>
+      </div>
+      <div class="panel-section controls">
+        <button id="new-game-btn" onclick="window.chessGame.restart()">
+          <span class="btn-icon">🔄</span> নতুন খেলা
+        </button>
+        <button id="undo-btn" onclick="window.chessGame.undo()">
+          <span class="btn-icon">↩️</span> পূর্বাবস্থা
+        </button>
+      </div>
+    </aside>
+  </main>
+  <!-- Promotion Modal -->
+  <div id="promotion-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h2>পদোন্নতি নির্বাচন করুন</h2>
+      <div id="promotion-choices" class="promotion-grid"></div>
+    </div>
+  </div>
+  <!-- Game Over Modal -->
+  <div id="game-over-modal" class="modal-overlay hidden">
+    <div class="modal-content game-over">
+      <div id="game-over-icon" class="game-over-icon"></div>
+      <h2 id="game-over-title"></h2>
+      <p id="game-over-message"></p>
+      <button id="restart-btn" onclick="window.chessGame.restart()">
+        <span class="btn-icon">🔄</span> আবার খেলুন
+      </button>
+    </div>
+  </div>
+  <!-- Flash overlay for capture animation -->
+  <div id="flash-overlay"></div>
+  <script src="game.js"></script>
+</body>
+</html>
